@@ -59,25 +59,21 @@ a { color: inherit; text-decoration: none; }
 
 .inner { width: 1024px; margin: 0 auto; }
 
-.common-header { position: absolute; top: 0; left: 0; z-index: 50; overflow: hidden; width: 100%; height: 100px; border-bottom: 1px solid #efefef; background: #fff; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-transition: all .3s ease-out; -o-transition: all .3s ease-out; -moz-transition: all .3s ease-out; transition: all .3s ease-out; }
+.common-header { position: fixed; top: 0; left: 0; z-index: 50; overflow: hidden; width: 100%; height: 100px; border-bottom: 1px solid #efefef; background: #fff; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-transition: all .3s ease-out; -o-transition: all .3s ease-out; -moz-transition: all .3s ease-out; transition: all .3s ease-out; }
 
 .common-header:before { display: block; content: ""; position: absolute; top: 100px; left: 0; width: 100%; height: -webkit-calc(100% - 100px); height: -moz-calc(100% - 100px); height: calc(100% - 100px); background: #fff; border-top: 1px solid #efefef; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .common-header.on { height: 640px; }
 
-.common-header .header-inner { padding: 0 40px; }
-
-.common-header .header-inner:after { display: block; content: ""; clear: both; }
-
-.common-header .logo { float: left; margin-top: 26px; }
+.common-header .logo { position: absolute; top: 26px; left: 40px; }
 
 .common-header .logo a { display: inline-block; position: relative; overflow: hidden; width: 190px; height: 0; max-height: 48px; padding-top: 48px; }
 
 .common-header .logo a:after { display: block; content: ''; position: absolute; top: 0; left: 0; background-image: url(../images/icons/icon.png); background-position: 0px -58px; width: 190px; height: 48px; }
 
-.common-header .gnb { position: relative; float: left; margin-left: 185px; }
+.common-header .gnb { position: relative; width: 1024px; margin: 0 auto; padding-right: 50px; }
 
-.common-header .depth1 { display: table; table-layout: fixed; width: 1024px; }
+.common-header .depth1 { display: table; table-layout: fixed; width: 100%; }
 
 .common-header .depth1 > li { display: table-cell; text-align: center; }
 
@@ -119,7 +115,7 @@ a { color: inherit; text-decoration: none; }
 
 .common-header .direct li.list2 a:after { background-image: url(../images/icons/icon.png); background-position: -250px -63px; width: 6px; height: 11px; }
 
-.common-header .util { float: right; margin-top: 30px; }
+.common-header .util { position: absolute; top: 30px; right: 40px; }
 
 .common-header .util ul:after { display: block; content: ""; clear: both; }
 
@@ -502,5 +498,18 @@ a { color: inherit; text-decoration: none; }
 .section-main .recruit .board:before { display: block; content: ""; position: absolute; bottom: 0; left: 50%; width: -webkit-calc(200% / 1.07619); width: -moz-calc(200% / 1.07619); width: calc(200% / 1.07619); height: 235px; -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%); transform: translateX(-50%); background: #d0ede5; }
 
 .section-main .recruit .board:after { display: block; content: ""; position: absolute; bottom: 0; right: -20px; width: 345px; height: 303px; background: url("../images/main/main-bottom-banner.png") no-repeat; }
+
+@media screen and (max-width: 1680px) { .common-header .gnb { width: 51.5%; } }
+
+@media screen and (max-width: 1440px) { .common-header .depth1 > li > a { font-size: 16px; }
+  .common-header .util .search button { width: 38px; }
+  .common-header .util a { padding: 0 10px; } }
+
+@media screen and (max-width: 1280px) { .common-header { height: 77px; }
+  .common-header .logo { top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+  .common-header .logo a { width: 174px; }
+  .common-header .logo a:after { width: 140px; height: 140px; background-image: url(../images/icons/icon2.png); }
+  .common-header .gnb { display: none; }
+  .common-header .util { display: none; } }
 
 /*# sourceMappingURL=../maps/style.css.map */
