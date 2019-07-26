@@ -82,7 +82,7 @@ gulp.task('auto-sprite', function() {
 			return options;
 		}
 	};
-	var spriteData = gulp.src('src/images/icon/*.{jpg,png,gif,svg}').pipe(spritesmith(opts)).on('error', function (err) {
+	var spriteData = gulp.src('src/images/**/*.{jpg,png,gif,svg}').pipe(spritesmith(opts)).on('error', function (err) {
 		console.log(err)
     });
 	
@@ -97,29 +97,13 @@ gulp.task('sprite-and-sass', function() {
 	runSequence('clean-sprite', 'auto-sprite', 'sass');
 });
 
-
-
-/*
-gulp.task('sprite', function(){
-  var spriteData = gulp.src('src/images-sprites/*.png')
-  .pipe(spritesmith({
-      imgName: 'sprites.png',
-      padding: 10,
-      cssName: '_sprites.scss',
-      imgPath:'../images/icons/sprites.png'
-  }));
-  spriteData.img.pipe(gulp.dest('dist/images/icons'));
-  spriteData.css.pipe(gulp.dest('src/scss/_vendors'));
-});
-*/
-
 // pipe()는 모듈의 기능을 실행해주는 함수
 
 gulp.task('watch', function() {
   gulp.watch('src/html/**', ['include']);
   gulp.watch('src/scss/**', ['sass']);
   gulp.watch('src/js/**', ['jsconcat']);
-  gulp.watch('src/img/icon/**', ['sprite-and-sass']);
+  gulp.watch('src/images/**/*', ['sprite-and-sass']);
 });
 
 

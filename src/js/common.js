@@ -2,6 +2,7 @@ var init = (function(){
 
     var $win = $(window);
     var $html = $('html,body');
+
     //헤더 
     var gnbActive = function(){
 
@@ -24,6 +25,26 @@ var init = (function(){
 
         $newsFeed.on('blur', function(){
             $header.removeClass('on');
+        });
+
+        $html.on('mousewheel',function(e){
+            
+            var delta = e.originalEvent.wheelDelta;
+
+            if( delta === 120) {
+                $header.css('transform','translateY(0)');
+            } else {
+                $header.css('transform','translateY(-100px)');
+            }
+        });
+
+        $win.on('scroll', function(){
+
+            var st = $html.scrollTop();
+
+            if( st === 0 ){
+                $header.css('transform','translateY(0)');
+            }
         });
     };
 

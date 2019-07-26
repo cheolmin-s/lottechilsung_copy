@@ -1,0 +1,70 @@
+@include pc-large{
+
+    .common-header{
+
+        .gnb{
+            width:51.5%;
+        }
+
+      
+    }
+}
+
+@include pc-middle{
+
+    .common-header{
+
+        .depth1{
+
+            & > li > a{
+                font-size:16px;
+            }
+        }
+
+        .util{
+
+            .search button{
+                width:38px;
+            }
+
+            & a{
+                padding:0 10px;
+            }
+        }
+        
+    }
+}
+
+@include tablet-large{
+
+    .common-header{
+        height:77px;
+
+        .logo{
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%);
+
+            & a{
+                width:174px;
+                
+                // 이부분 왜 안먹죠?
+                &:after{
+                    width:140px;
+                    height:140px;
+                    @include sprite-image($icon2-header-logo-3x);   
+                }
+            }
+        }
+
+        .gnb{
+            display:none;
+        }
+
+        .util{
+            display:none;
+        }
+
+    }
+}
+
