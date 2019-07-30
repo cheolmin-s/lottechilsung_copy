@@ -27,6 +27,7 @@
     "bxslider": "^4.2.14",
     "del": "^5.0.0",
     "gulp.spritesmith-multi": "^3.1.0",
+    "jquery.touchflow": "^1.6.4",
     "jquery.touchslider": "^1.6.3",
     "merge-stream": "^2.0.0"
   },

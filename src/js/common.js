@@ -7,7 +7,7 @@ var init = (function(){
     var gnbActive = function(){
 
         var $header = $('.common-header');
-        var $depth1Link = $('.depth1 > li > a');
+        var $depth1Link = $('.gnb .depth1 > li > a');
         var $newsFeed = $('.news-feed > button');
         var $directLink = $('.direct a')
 
@@ -27,25 +27,81 @@ var init = (function(){
             $header.removeClass('on');
         });
 
-        $html.on('mousewheel',function(e){
-            
+        $win.on('mousewheel', function(e){
+
             var delta = e.originalEvent.wheelDelta;
 
             if( delta === 120) {
-                $header.css('transform','translateY(0)');
+                $header.removeClass('up');
             } else {
-                $header.css('transform','translateY(-100px)');
+                $header.addClass('up');
             }
         });
-
+        
         $win.on('scroll', function(){
 
             var st = $html.scrollTop();
 
             if( st === 0 ){
-                $header.css('transform','translateY(0)');
+                $header.removeClass('on');
             }
         });
+
+        // 모바일
+        
+        var $mobMenuBtn = $('.mob-nav-btn');
+        var $mobMenuwrap = $('.mob-nav-wrap');
+        var $mobDepth1 = $('.mob-nav-wrap .depth1 > li > a');
+        var $mobDepth2 = $('.mob-nav-wrap .menu-open');
+        var $mobCloseBtn =  $('.mob-nav-wrap .close-btn, .dim');
+        var $dim = $('.dim');
+
+        $mobMenuBtn.on('click', function(){
+            
+            $html.addClass('scroll-off').on('scroll touchmove mousewheel',function(e){
+                e.stopPropagation();
+            });
+
+            $dim.addClass('on');
+            $mobMenuwrap.addClass('on');
+        });
+
+        $mobDepth1.on('click',function(e){
+
+            e.preventDefault();
+
+            var $this = $(this);
+            
+            if( $this.hasClass('on')){
+                $mobDepth2.removeClass('on').siblings('.depth3').stop().slideUp();
+                $this.removeClass('on').siblings('.depth2').stop().slideUp();
+            } else {
+                $mobDepth1.removeClass('on').siblings('.depth2').stop().slideUp();
+                $this.addClass('on').siblings('.depth2').stop().slideDown();
+            }
+        });
+
+        $mobDepth2.on('click',function(e){
+            
+            e.preventDefault();
+
+            var $this = $(this);
+
+            if( $this.hasClass('on') ){
+                $this.removeClass('on').siblings('.depth3').stop().slideUp();
+            } else {
+                $mobDepth2.removeClass('on').siblings('.depth3').stop().slideUp();
+                $this.addClass('on').siblings('.depth3').stop().slideDown();
+            }
+        });
+
+        $mobCloseBtn.on('click',function(e){
+            
+            $html.removeClass('scroll-off').off('scroll touchmove mousewheel');
+            $mobMenuwrap.removeClass('on');
+            $dim.removeClass('on');
+        });
+
     };
 
     //메인 비주얼 슬라이더
@@ -87,7 +143,7 @@ var init = (function(){
             }
         });
     };
-
+    
     //BRAND 탭메뉴
     var brandTab = function(){
 
@@ -190,13 +246,13 @@ var init = (function(){
            }
 
         }
-
+        
         function circle(circle){
             
             var $this = $(circle);
-            var $width = $this.width() / 2;
-            var offset = $this.position().left + $width - 5;
-            
+            var $width = $this.width();
+            var offset = $this.position().left + $width / 2 - 5;
+
             $circle.stop().animate({ left : offset },200);
         }
 
@@ -218,6 +274,11 @@ var init = (function(){
             .prop({ 'hidden': true })
             .removeClass('on')
         ;
+
+        $('.tab-menu .wrap').touchFlow({
+            axis : "x",
+        });
+
     };
 
     //recruit 슬라이더
@@ -271,19 +332,12 @@ var init = (function(){
         var $option = $('.common-footer .select a');
         var $linkBtn = $('.common-footer .link-btn');
 
-
         $selectBtn.on('click',function(){
-
+        
             if( $box.hasClass('on') ){
-
-                $box.removeClass('on');
-                $select.css('height',40);
-
+                $box.removeClass('on').parent($select).removeClass('on');
             } else {
-
-                $box.addClass('on');
-                $select.css('height',420);
-
+                $box.addClass('on').parent($select).addClass('on');
             }
         });
 
@@ -295,11 +349,11 @@ var init = (function(){
             var text = $this.text();
             var val = $this.attr('data-val');
 
-            $box.removeClass('on');
-            $select.css('height',40);
-            $selectBtn.text(text);
+            $box.removeClass('on').parent($select).removeClass('on').children('button').text(text);
             $linkBtn.attr('href',val)
         });
+
+        
     };
 
     //TOP 버튼

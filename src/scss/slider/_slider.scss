@@ -9,11 +9,12 @@
             &-btn{
                 display:inline-block;
                 position:relative;
-                @include spriteIR($icon-main-visual-slide-off,30px,30px);
+                @include hidden(30px,30px);
+                background:url('../images/common/main-visual-slide-off.png')no-repeat;
             }
     
             &-active{
-                @include spriteIR($icon-main-visual-slide-on,30px,30px);
+                background:url('../images/common/main-visual-slide-on.png')no-repeat;
             }
         }
     }
@@ -22,15 +23,17 @@
         position:absolute;
         top:50%;
         left:40px;
+        @include hidden(40px,79px);
         margin-top:-19px;
-        @include spriteIR($icon-main-visual-slide-prev,40px,79px);
+        background:url('../images/common/main-visual-slide-prev.png')no-repeat;
     }
     .btn-next{
         position:absolute;
         top:50%;
         right:40px;
+        @include hidden(40px,79px);
         margin-top:-20px;
-        @include spriteIR($icon-main-visual-slide-next,40px,79px);
+        background:url('../images/common/main-visual-slide-next.png')no-repeat;
     }
 }
 
@@ -39,6 +42,7 @@
 
 //메인 슬라이더
 .main-banner{
+    position:relative;
     
     .slider-wrap{
         position:relative;
@@ -94,6 +98,7 @@
         left:calc(50% - 15px);
         height:30px;
         transform:translate(-50%,-50%);
+        font-size:0;
 
         &-btn{
             margin:0 4px;
@@ -102,10 +107,11 @@
 
     .toggle-btn{
         position:absolute;
-        top:calc(50% + 136px);
+        top:calc(50% + 127px);
         left:calc(50% - -57px);
-        transform:translate(-50%,-50%);
         z-index:5;
+        transform:translate(-50%,-50%);
+        font-size:0;
 
         & button{
             position:relative;
@@ -117,15 +123,41 @@
                 position:absolute;
                 top:9px;
                 left:11px;
-                @include sprite($icon-main-visual-slide-pause);
+                width:9px;
+                height:10px;
+                background:url('../images/common/main-visual-slide-pause.png')no-repeat;
             }
-            
-            
+                     
             &.on{
                 &:after{
-                    background-position:-250px -21px;
+                    background:url('../images/common/main-visual-slide-play.png')no-repeat;
                 }
             }
+        }
+    }
+
+    .scroll-down{
+        position:absolute;
+        left:50%;
+        bottom:0;
+        z-index:5;
+        padding-bottom:53px;
+        font-size:14px;
+        color:#fff;
+        font-family:'Montserrat', sans-serif;
+        font-weight:400;
+        transform:translateX(-50%);
+
+        &:after{
+            display:block;
+            content:"";
+            position:absolute;
+            bottom:0;
+            left:50%;
+            width:1px;
+            height:50px;
+            margin-left:-1px;
+            background:#fff;
         }
     }
 }
@@ -139,15 +171,17 @@
     .ts-paging{
         position:absolute;
         top:0;
-        left:0;
+        left:5%;
+        font-size:0;
 
         &-btn{
-            position:relative;
-            @include spriteIR($icon-main-recruit-slide-off,30px,30px);
+            position:relative;        
+            @include hidden(30px,30px);
+            background:url('../images/common/main-recruit-slide-off.png')no-repeat;
         }
 
         &-active{
-            @include spriteIR($icon-main-recruit-slide-on,30px,30px);
+            background:url('../images/common/main-recruit-slide-on.png')no-repeat;
         }
     }
 }

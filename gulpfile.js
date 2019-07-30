@@ -62,7 +62,7 @@ gulp.task('concat', function() {
 
 // Clean sprite
 gulp.task('clean-sprite', function() {
-	return del('dist/images/icons/*');
+	return del('dist/images/sprite/*');
 });
 
 
@@ -70,7 +70,7 @@ gulp.task('clean-sprite', function() {
 gulp.task('auto-sprite', function() {
 	var opts = {
 		spritesmith: function (options, sprite, icons){
-			options.imgPath =  `../images/icons/${options.imgName}`;
+			options.imgPath =  `../images/sprite/${options.imgName}`;
 			options.cssName = `_${sprite}-sprite.scss`;
 			options.cssTemplate = null;
 			options.cssSpritesheetName = sprite;
@@ -86,7 +86,7 @@ gulp.task('auto-sprite', function() {
 		console.log(err)
     });
 	
-	var imgStream = spriteData.img.pipe(gulp.dest('dist/images/icons'));
+	var imgStream = spriteData.img.pipe(gulp.dest('dist/images/sprite'));
 	var cssStream = spriteData.css.pipe(gulp.dest('src/scss/vendors'));
  
 	return merge(imgStream, cssStream);

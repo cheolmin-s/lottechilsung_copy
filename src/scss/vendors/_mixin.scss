@@ -45,8 +45,10 @@
 $pc-large-width:1680px;
 $pc-middle-width:1440px;
 $tablet-large-width:1280px;
+$tablet-middle-width:981px;
+$mobile-large-width:758px;
 
-// only PC
+// pc
 @mixin pc-large {
 	@media screen and (max-width: $pc-large-width) {
 		@content;
@@ -61,9 +63,23 @@ $tablet-large-width:1280px;
 
 //---------------------------------------------------
 
-//태블릿
+// tablet
 @mixin tablet-large {
 	@media screen and (max-width: $tablet-large-width) {
+		@content;
+	}
+}
+@mixin tablet-middle {
+	@media screen and (max-width: $tablet-middle-width) {
+		@content;
+	}
+}
+
+//----------------------------------------------------
+
+// mobile
+@mixin mobile-large {
+	@media screen and (max-width: $mobile-large-width) {
 		@content;
 	}
 }

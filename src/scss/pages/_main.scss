@@ -1,33 +1,5 @@
 .section-main{
-
-    .main-banner{
-
-        .scroll-down{
-            position:absolute;
-            left:50%;
-            bottom:0;
-            z-index:5;
-            padding-bottom:53px;
-            font-size:14px;
-            color:#fff;
-            font-family:'Montserrat', sans-serif;
-            font-weight:400;
-            transform:translateX(-50%);
-
-            &:after{
-                display:block;
-                content:"";
-                position:absolute;
-                bottom:0;
-                left:50%;
-                width:1px;
-                height:50px;
-                margin-left:-1px;
-                background:#fff;
-            }
-        }
-    }
-
+    
     .company{
         padding:89px 0 100px 0;
 
@@ -55,17 +27,26 @@
         }
 
         .box{
-            width:1140px;
+            width:1024px;
             margin:0 auto;
             @include clear;
         }
 
         .list{
+            position:relative;
             float:left;
             width:492px;
             height:492px;
-            padding:55px 60px;
-            box-sizing:border-box;
+
+            & > div{
+                position:absolute;
+                top:0;
+                left:0;
+                right:0;
+                bottom:0;
+                padding:55px 60px;
+                box-sizing:border-box;
+            }
         }
 
         .list2{
@@ -158,10 +139,13 @@
             top:0;
             left:102px;
 
-            .btn-prev{                
+            & button{
                 display:block;
                 position:relative;
                 @include hidden(62px,40px);
+            }
+
+            .btn-prev{                
 
                 &:after{
                     display:block;
@@ -169,15 +153,14 @@
                     position:absolute;
                     top:18px;
                     left:50%;
+                    width:14px;
+                    height:8px;
                     margin-left:-7px;
-                    @include sprite($icon-main-news-arrow-up);
+                    background:url('../images/common/main-news-arrow-up.png')no-repeat;
                 }
             }
 
             .btn-next{
-                display:block;
-                position:relative;
-                @include hidden(62px,40px);
 
                 &:after{
                     display:block;
@@ -185,8 +168,10 @@
                     position:absolute;
                     bottom:18px;
                     left:50%;
+                    width:14px;
+                    height:8px;
                     margin-left:-7px;
-                    @include sprite($icon-main-news-arrow-down);
+                    background:url('../images/common/main-news-arrow-down.png')no-repeat;
                 }
             }
         }
@@ -238,7 +223,7 @@
         .title-wrap{
             position:sticky;
             top:116px;
-            margin-bottom:104px;
+            margin-bottom:24px;
             color:#fff;
             text-align:center;
         }
@@ -261,8 +246,8 @@
 
         // 탭 콘텐츠 영역
         .tab-contents{
-            width:1024px;
-            margin:0 auto;
+            overflow:hidden;
+            padding-top:80px;
 
             .panel{
                 position:relative;
@@ -286,7 +271,7 @@
                             position:absolute;
                             top:-63px;
                             right:-135px;
-                            width:526px;
+                            width:520px;
                             height:536px;
                             background:url('../images/main/main-brand-con#{$i}-1.png')no-repeat;
                         }
@@ -297,7 +282,7 @@
                             position:absolute;
                             top:-63px;
                             right:-135px;
-                            width:526px;
+                            width:520px;
                             height:536px;
                             background:url('../images/main/main-brand-con#{$i}-2.png')no-repeat;
                         }
@@ -378,16 +363,26 @@
                 position:relative;          
             }
 
-            & ul{        
-                @include clear;
+            .wrap{
+                position:relative;
+                overflow:hidden;
+            }
+
+            & ul{
+                display:block;
+                position:relative;
+                float:left;
+                font-size:0;
+                white-space:nowrap;
             }
 
             & li{
-                float:left;
-                margin-right:36px;
+                display:inline-block;
+                padding-right:36px;
+                font-size:0;
 
                 &:last-child{
-                    margin-right:0;
+                    padding-right:0;
                 }
             }
 
@@ -607,28 +602,31 @@
                     position:absolute;
                     top:24px;
                     left:30px;
+                    width:32px;
+                    height:32px;
                 }
             }
 
             // 링크 아이콘
             .list1 > a{
-                &:after{           
-                    @include sprite($icon-main-recruit-icon1);
+                &:after{ 
+                    background:url('../images/common/main-recruit-icon1.png')no-repeat;
                 }
             }
             .list2 > a{
                 &:after{              
-                    @include sprite($icon-main-recruit-icon2);
+                    background:url('../images/common/main-recruit-icon2.png')no-repeat;
                 }
             }
             .list3 > a{
-                &:after{              
-                    @include sprite($icon-main-recruit-icon3);
+                &:after{    
+                    width:30px;          
+                    background:url('../images/common/main-recruit-icon3.png')no-repeat;
                 }
             }
             .list4 > a{
                 &:after{              
-                    @include sprite($icon-main-recruit-icon4);
+                    background:url('../images/common/main-recruit-icon4.png')no-repeat;
                 }
             }
         }
@@ -700,8 +698,10 @@
                     position:absolute;
                     top:50%;
                     right:0;
+                    width:11px;
+                    height:10px;
                     margin-top:-5px;
-                    @include sprite($icon-main-recruit-all);
+                    background:url('../images/common/main-recruit-all.png')no-repeat;
                 }
             }
         }
